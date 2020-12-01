@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "prueba-9ed76": {
+      "hosting": {
+        "todo-list": [
+          "prueba-9ed76"
+        ]
+      }
+    }
+  }
+}

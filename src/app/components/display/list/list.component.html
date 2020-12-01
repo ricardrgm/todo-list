@@ -1,0 +1,8 @@
+<mat-list>
+  <ng-container *ngFor="let item of itemList; let odd = odd">
+    <app-card [odd]="odd"
+    [item]="item">
+
+  </app-card>
+</ng-container>
+</mat-list>
