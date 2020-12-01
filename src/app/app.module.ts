@@ -1,3 +1,4 @@
+import { DialogComponent } from './components/display/dialog/dialog.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire';
@@ -29,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
     MessageComponent,
     ListComponent,
     CardComponent,
+    DialogComponent,
     HeaderComponent
   ],
   imports: [
@@ -41,6 +43,7 @@ import { HeaderComponent } from './components/header/header.component';
     AngularFirestoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[DialogComponent]
 })
 export class AppModule { }

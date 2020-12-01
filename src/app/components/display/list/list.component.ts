@@ -1,5 +1,7 @@
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Item } from './../../../interfaces/item';
 import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -9,9 +11,29 @@ import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/cor
 export class ListComponent implements OnInit, OnChanges {
 
   @Input() itemList:Item[];
-  constructor() { }
+
+  constructor(private dialog: MatDialog) { }
+
+
+  openDialog(){
+    const dialogConfig =new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data ={
+      orderId:1,
+      name:'prueba',
+      description: 'prueba'
+    }
+
+    this.dialog.open(DialogComponent, dialogConfig);
+
+
+  }
 
   ngOnInit(): void {
+    this.openDialog();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
