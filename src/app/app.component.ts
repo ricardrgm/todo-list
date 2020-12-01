@@ -21,20 +21,23 @@ export class AppComponent implements OnInit{
 
   formGroup: FormGroup;
 
-  ngOnInit(){
-
-    console.log('Soy un OnInit de AppComponent')
-    this.formGroup = this.fb.group({
+  createForm():FormGroup{
+    return  this.fb.group({
+      id:'',
       orderId:['',Validators.required],
       name:['',Validators.required],
       description:['',Validators.required]
     });
+  }
+
+  ngOnInit(){
+
+    console.log('Soy un OnInit de AppComponent')
+    this.formGroup = this.createForm();
     this.firebaseService.getTotalItems$().subscribe(data => {this.itemList = data
       console.log(this.itemList);} );
 
-
-
-  }
+ }
 
   addItem(item:Item){
       this.firebaseService.addItem(item);/* .then(console.log); */

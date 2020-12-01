@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Item } from './../../../interfaces/item';
 import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
@@ -9,31 +10,37 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnChanges {
-
+  @Input() formGroup: FormGroup;
   @Input() itemList:Item[];
 
   constructor(private dialog: MatDialog) { }
 
 
-  openDialog(){
+  openDialog(item){
     const dialogConfig =new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
+    this.formGroup.setValue(item);
+    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    dialogConfig.data ={
+    dialogConfig.data = this.formGroup;
+    /* {
       orderId:1,
       name:'prueba',
       description: 'prueba'
-    }
+    } */
 
-    this.dialog.open(DialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data=> console.log(data)
+    )
 
 
   }
 
   ngOnInit(): void {
-    this.openDialog();
+    /* this.openDialog(); */
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -18,7 +18,9 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editItem(item){}
+  editItem(item){
+    this.editOut.emit(item);
+  }
   deleteItem(item){}
 
 }
