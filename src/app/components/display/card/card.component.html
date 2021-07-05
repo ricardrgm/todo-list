@@ -1,0 +1,13 @@
+<mat-card [ngClass]="{'odd': odd == true}">
+<div class="matLine">
+    <p matLine>{{item.id}}</p>   
+    <h3 matLine>{{item.name}}</h3>
+    <p>{{item.description}}</p>
+</div>
+<div class="botonera">
+<button mat-button color=primary (click)="editItem(item)">Edit</button>
+<button mat-button color=accent  (click)="deleteItem(item)">Delete</button>
+</div>
+</mat-card>
+
+<!-- {{item | json}} -->
