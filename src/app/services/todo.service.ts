@@ -20,11 +20,19 @@ export class TodoService {
       return this.refreshToDo$.pipe(switchMap(_=>this.http.get<Array<Item>>(environment.api_url)));
   }
 
-  addItems(){}
+
 
   updateItem(item:Item):void{
     //para detectar el cambio hay que ejecutar el método next del BehaviorSubject
     this.http.put<Item>(environment.api_url.concat(`${item.id}`),item).subscribe(()=>this.refreshToDo$.next(undefined));
+  }
+
+  addItem(item:Item):void{
+    this.http.post<Item>(environment.api_url, item).subscribe(()=>this.refreshToDo$.next(undefined));
+  }
+
+  deleteItem(item:Item):void{
+    this.http.delete(environment.api_url.concat(`${item.id}`)).subscribe(()=>this.refreshToDo$.next(undefined));
   }
 
 }

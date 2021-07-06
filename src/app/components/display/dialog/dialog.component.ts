@@ -22,6 +22,7 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
   save(){
+    // console.log(this.formGroup.value);
     this.dialogRef.close(this.formGroup.value);
   }
 

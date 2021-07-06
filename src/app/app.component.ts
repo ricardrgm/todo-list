@@ -16,7 +16,15 @@ export class AppComponent implements OnInit {
     private fb:FormBuilder,
     private todoService: TodoService){  }
 
+  generateForm(){
+    return  this.fb.group({
+      id:[''],
+      name:['', Validators.required],
+      description:['',Validators.required]
+    })
+  }
   ngOnInit(){
+    console.log('APP.COMPONENT Loading');
     this.formGroup = this.fb.group({
       id:[''],
       name:['', Validators.required],
@@ -29,5 +37,11 @@ export class AppComponent implements OnInit {
   }
   updateItem(item:Item){
     this.todoService.updateItem(item);
+  }
+  addItem(item:Item){
+    this.todoService.addItem(item);
+  }
+  deleteItem(item:Item){
+    this.todoService.deleteItem(item);
   }
 }

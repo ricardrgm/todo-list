@@ -2,7 +2,9 @@
 <app-item></app-item>
 <app-list [itemList]=itemList
           [formGroup]=formGroup
-          (itemEvt)=updateItem($event)></app-list>
+          (updateItemEvt)=updateItem($event)
+          (addItemEvt)=addItem($event)
+          (deleteItemEvt)=deleteItem($event)></app-list>
 <app-error><app-error-message></app-error-message></app-error>
 <app-footer *ngIf="showFooter"></app-footer>
 

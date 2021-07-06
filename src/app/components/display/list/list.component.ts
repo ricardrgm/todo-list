@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
@@ -10,11 +10,13 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnChanges {
 
   @Input() formGroup!:FormGroup;
   @Input() itemList!:Item[];
-  @Output() itemEvt = new EventEmitter();
+  @Output() updateItemEvt = new EventEmitter();
+  @Output() addItemEvt = new EventEmitter();
+  @Output() deleteItemEvt = new EventEmitter();
 
   constructor(private dialog: MatDialog) { }
 
@@ -26,12 +28,31 @@ export class ListComponent implements OnInit {
     dialogConfig.data = this.formGroup;
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(
-      data => this.itemEvt.emit(data)
-    )
+    return dialogRef.afterClosed();
 
   }
   ngOnInit(): void {
+  }
+
+  openUpdateDialog(item:Item){
+
+    this.openDialog(item).subscribe(
+      data => this.updateItemEvt.emit(data)
+    )
+
+  }
+  openInsertDialog(){
+    this.openDialog(new Item()).subscribe(
+      data => this.addItemEvt.emit(data)
+    )
+  }
+
+  deleteEvent(item:Item){
+    this.deleteItemEvt.emit(item);
+  }
+
+  ngOnChanges(changes:SimpleChanges){
+    this.itemList.sort((a,b)=> b.id - a.id);
   }
 
 }

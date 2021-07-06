@@ -1,8 +1,15 @@
+<button mat-icon-button color="primary" 
+        aria-label="Adding Button"
+        (click)=openInsertDialog()>
+    <mat-icon>add_circle</mat-icon>
+  </button>
+
 <mat-list>
     <ng-container *ngFor="let item of itemList; let odd = odd">
         <app-card 
         [odd]="odd"
         [item]="item"
-        (editEvent)=openDialog($event)></app-card>
+        (editEvent)=openUpdateDialog($event)
+        (deleteEvent)=deleteEvent($event)></app-card>
     </ng-container>
 </mat-list>
