@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
 import { Item } from 'src/app/model/item';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -13,6 +14,7 @@ export class ListComponent implements OnInit {
 
   @Input() formGroup!:FormGroup;
   @Input() itemList!:Item[];
+  @Output() itemEvt = new EventEmitter();
 
   constructor(private dialog: MatDialog) { }
 
@@ -24,6 +26,9 @@ export class ListComponent implements OnInit {
     dialogConfig.data = this.formGroup;
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      data => this.itemEvt.emit(data)
+    )
 
   }
   ngOnInit(): void {

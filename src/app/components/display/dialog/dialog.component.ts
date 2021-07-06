@@ -18,7 +18,11 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  close(){}
-  save(){}
+  close(){
+    this.dialogRef.close();
+  }
+  save(){
+    this.dialogRef.close(this.formGroup.value);
+  }
 
 }

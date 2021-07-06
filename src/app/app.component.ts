@@ -27,4 +27,7 @@ export class AppComponent implements OnInit {
   toggleFooter(){
     this.showFooter = !this.showFooter;
   }
+  updateItem(item:Item){
+    this.todoService.updateItem(item);
+  }
 }
