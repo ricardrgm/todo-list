@@ -1,12 +1,13 @@
-import { AfterContentChecked, 
-         AfterContentInit, 
-         AfterViewChecked, 
-         AfterViewInit, 
-         Component, 
-         DoCheck, 
-         OnChanges, 
-         OnDestroy, 
-         OnInit, 
+import { Input } from '@angular/core';
+import { AfterContentChecked,
+         AfterContentInit,
+         AfterViewChecked,
+         AfterViewInit,
+         Component,
+         DoCheck,
+         OnChanges,
+         OnDestroy,
+         OnInit,
          SimpleChanges } from '@angular/core';
 
 @Component({
@@ -17,7 +18,7 @@ import { AfterContentChecked,
 export class FooterComponent{
 
   order = 1;
-
+  @Input() numberOfItems!: number;
   constructor() {
     console.log('I am from constructor()!! and my order::::' + this.order);
     this.order++;

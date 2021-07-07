@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 import { Item } from './model/item';
 import { TodoService } from './services/todo.service';
 
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   showFooter = true;
   itemList!: Item[];
   formGroup!:FormGroup;
+
   constructor(
     private fb:FormBuilder,
     private todoService: TodoService){  }
@@ -32,6 +34,9 @@ export class AppComponent implements OnInit {
     })
     this.todoService.getTotalItems$().subscribe(data => this.itemList = data )
   }
+  
+
+
   toggleFooter(){
     this.showFooter = !this.showFooter;
   }

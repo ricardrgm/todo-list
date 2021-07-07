@@ -16,7 +16,7 @@ export class TodoService {
 
   getTotalItems$(): Observable<Array<Item>>{
   //Encadenamos la petición http.get que devuelve un observable frío al
-  //observable caliente    
+  //observable caliente
       return this.refreshToDo$.pipe(switchMap(_=>this.http.get<Array<Item>>(environment.api_url)));
   }
 

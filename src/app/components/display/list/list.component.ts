@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 
 import { Item } from 'src/app/model/item';
 import { DialogComponent } from '../dialog/dialog.component';
@@ -10,14 +11,14 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnChanges {
+export class ListComponent implements OnInit, OnChanges, AfterViewChecked{
 
   @Input() formGroup!:FormGroup;
   @Input() itemList!:Item[];
   @Output() updateItemEvt = new EventEmitter();
   @Output() addItemEvt = new EventEmitter();
   @Output() deleteItemEvt = new EventEmitter();
-
+  @ViewChild(MatIcon)  matIcon!: MatIcon;
   constructor(private dialog: MatDialog) { }
 
   openDialog(item:Item){
@@ -53,6 +54,15 @@ export class ListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes:SimpleChanges){
     this.itemList.sort((a,b)=> b.id - a.id);
+  }
+
+  ngAfterViewChecked(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    if(this.itemList.length==0){
+     this.matIcon.color='accent';}else{
+      this.matIcon.color='primary';
+     }
   }
 
 }

@@ -2,6 +2,10 @@
 //     font-size: 2rem;
 // }
 
+:host{
+  overflow: scroll;
+}
+
 mat-icon{
     font-size: 40px;
 }
