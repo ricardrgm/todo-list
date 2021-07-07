@@ -30,7 +30,9 @@ export class AppComponent implements OnInit {
       name:['', Validators.required],
       description:['',Validators.required]
     })
-    this.todoService.getTotalItems$().subscribe(data => this.itemList = data )
+    this.todoService.getTotalItems$().subscribe(data => {
+      this.itemList = data
+      console.log(this.itemList);} )
   }
   toggleFooter(){
     this.showFooter = !this.showFooter;

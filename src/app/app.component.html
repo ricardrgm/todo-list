@@ -5,6 +5,8 @@
           (updateItemEvt)=updateItem($event)
           (addItemEvt)=addItem($event)
           (deleteItemEvt)=deleteItem($event)></app-list>
-<app-error><app-error-message></app-error-message></app-error>
+<app-error *ngIf = "itemList?.length == 0">
+    <app-error-message message="No quedan items en la lista"></app-error-message>
+</app-error>
 <app-footer *ngIf="showFooter"></app-footer>
 

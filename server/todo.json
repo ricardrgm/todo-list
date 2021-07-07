@@ -1,19 +1,7 @@
 {
   "todo": [
     {
-      "id": 1,
-      "name": "todo refrescante",
-      "description": "This is todo list app"
-    },
-    {
-      "id": 2,
-      "name": "otra tarea",
-      "description": "otro todo list app"
-    },
-    {
-      "id": 3,
-      "name": "new task",
-      "description": "nueva"
+      "id": 1
     }
   ]
 }
