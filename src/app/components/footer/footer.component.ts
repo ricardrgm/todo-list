@@ -18,7 +18,7 @@ import { AfterContentChecked,
 export class FooterComponent{
 
   order = 1;
-  @Input() numberOfItems!: number;
+  @Input() numberOfItems!: number | undefined;
   constructor() {
     console.log('I am from constructor()!! and my order::::' + this.order);
     this.order++;

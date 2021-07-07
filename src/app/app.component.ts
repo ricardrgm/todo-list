@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { Item } from './model/item';
+import { FirebaseService } from './services/firebase.service';
 import { TodoService } from './services/todo.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private todoService: TodoService){  }
+    private todoService: FirebaseService){  }
 
   generateForm(){
     return  this.fb.group({
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
     })
     this.todoService.getTotalItems$().subscribe(data => this.itemList = data )
   }
-  
+
 
 
   toggleFooter(){
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
   }
   addItem(item:Item){
     this.todoService.addItem(item);
+
   }
   deleteItem(item:Item){
     this.todoService.deleteItem(item);

@@ -33,6 +33,7 @@ export class ListComponent implements OnInit, OnChanges, AfterViewChecked{
 
   }
   ngOnInit(): void {
+
   }
 
   openUpdateDialog(item:Item){
@@ -53,16 +54,20 @@ export class ListComponent implements OnInit, OnChanges, AfterViewChecked{
   }
 
   ngOnChanges(changes:SimpleChanges){
-    this.itemList.sort((a,b)=> b.id - a.id);
+    this.itemList?.sort((a,b)=> b.id - a.id);
   }
 
+  ngAfterViewInit():void{
+    // this.matIcon.color='primary';
+  }
   ngAfterViewChecked(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    if(this.itemList.length==0){
-     this.matIcon.color='accent';}else{
-      this.matIcon.color='primary';
-     }
-  }
+setTimeout(()=> this.itemList?.length==0?
+      this.matIcon.color='accent':
+      this.matIcon.color='primary'
 
+  )
+
+}
 }

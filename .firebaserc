@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-rgl": {
+      "hosting": {
+        "todo-list": [
+          "todo-rgl"
+        ]
+      }
+    }
+  }
+}

@@ -5,10 +5,10 @@
           (updateItemEvt)=updateItem($event)
           (addItemEvt)=addItem($event)
           (deleteItemEvt)=deleteItem($event)></app-list>
-<app-error *ngIf="itemList.length ==0">
+<app-error *ngIf="itemList?.length ==0">
             <app-error-message message="There are no items in the list"></app-error-message>
 </app-error>
 <app-footer *ngIf="showFooter"
-        [numberOfItems]=itemList.length
+        [numberOfItems]=itemList?.length
 [class.mat-elevation-z8]="true"></app-footer>
 
