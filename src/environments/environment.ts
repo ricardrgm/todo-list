@@ -6,12 +6,7 @@ export const environment = {
   production: false,
   api_url:"http://localhost:3000/todo/",
   firebaseConfig:{
-    apiKey: "AIzaSyAi1tFwok5ZxwSPRtGA1l20w7cC3tgZeTI",
-    authDomain: "todo-rgl.firebaseapp.com",
-    projectId: "todo-rgl",
-    storageBucket: "todo-rgl.appspot.com",
-    messagingSenderId: "335982331063",
-    appId: "1:335982331063:web:5d48bcedae16fcf7e1b932"
+
   }
 };
 
