@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todo-list-rgmirayo": {
+      "hosting": {
+        "angular-todo-list": [
+          "todo-list-rgmirayo"
+        ]
+      }
+    }
+  }
+}

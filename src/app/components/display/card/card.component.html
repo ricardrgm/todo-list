@@ -1,0 +1,15 @@
+<mat-card [ngClass]="{'odd': odd == true}">
+  <div>
+    <p matLine>{{ item.id }}</p>
+    <p matLine>{{ item.orderId}}</p>
+    <h3 matLine>{{ item.name }}</h3>
+    <p>{{ item.description }}</p>
+  </div>
+  <div class="botonear">
+    <button mat-stroked-button color=primary (click)="editItem(item)">edit</button>
+    <button mat-stroked-button color=accent (click)="deleteItem(item)">delete</button>
+    <!-- <button mat-stroked-button (click)="openSnackBar(item)">Delete</button> -->
+  </div>
+</mat-card>
+
+<!-- {{item |json}} -->

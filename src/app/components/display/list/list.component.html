@@ -1,0 +1,11 @@
+<mat-list>
+  <app-item (additemEvt)="openDialogAddItem()"></app-item>
+  <ng-container *ngFor="let item of itemList; let odd = odd">
+    <app-card
+      [item]="item"
+      [odd]="odd"
+      (editEvt)="openDialogUpdateItem($event)"
+      (deleteEvt)="openSnackBar($event)"
+    ></app-card>
+  </ng-container>
+</mat-list>
